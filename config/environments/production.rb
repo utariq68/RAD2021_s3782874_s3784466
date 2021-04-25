@@ -14,6 +14,7 @@ Rails.application.configure do
   }
 
   config.hosts << "f8ba0af93ced47efa48267cedbe8c948.vfs.cloud9.us-east-2.amazonaws.com"
+  config.hosts << "mysterious-hollows-14978.herokuapp.com"
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
