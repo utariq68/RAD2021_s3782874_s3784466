@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   get 'collection/all', to: 'collection#all'
   root 'home#index'
   get 'home/saved_list'
+  get 'newsletter', to: 'newsletter#newsletter'
+  post 'newsletter', to: 'newsletter#newsletter'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

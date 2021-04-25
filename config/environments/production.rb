@@ -2,6 +2,17 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
 
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    :address => "smtp@gmail.com",
+    :port => 587,
+    :user_name => "rada1email@gmail.com",
+    :password => "RandomPass123",
+    :authentication => "plain",
+    :enable_starttls_auto => true
+  }
+
   config.hosts << "f8ba0af93ced47efa48267cedbe8c948.vfs.cloud9.us-east-2.amazonaws.com"
   # Settings specified here will take precedence over those in config/application.rb.
 
