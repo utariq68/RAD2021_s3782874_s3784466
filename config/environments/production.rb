@@ -2,8 +2,6 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
 
-  config.action_mailer.delivery_method = :smtp
-
   config.action_mailer.smtp_settings = {
     :user_name => "s3784466@student.rmit.edu.au",
     :password => "RADAssignment1Email123",
@@ -13,6 +11,8 @@ Rails.application.configure do
     :enable_starttls_auto => true,
     :domain => "heroku.com"
   }
+
+  config.action_mailer.delivery_method = :smtp
 
   config.hosts << "f8ba0af93ced47efa48267cedbe8c948.vfs.cloud9.us-east-2.amazonaws.com"
   config.hosts << "mysterious-hollows-14978.herokuapp.com"
