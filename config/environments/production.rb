@@ -5,12 +5,13 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    :address => "smtp@gmail.com",
+    :user_name => "s3784466@student.rmit.edu.au",
+    :password => "RADAssignment1Email123",
+    :address => "smtp.sendgrid.net",
     :port => 587,
-    :user_name => "rada1email@gmail.com",
-    :password => "RandomPass123",
     :authentication => "plain",
-    :enable_starttls_auto => true
+    :enable_starttls_auto => true,
+    :domain => "heroku.com"
   }
 
   config.hosts << "f8ba0af93ced47efa48267cedbe8c948.vfs.cloud9.us-east-2.amazonaws.com"
