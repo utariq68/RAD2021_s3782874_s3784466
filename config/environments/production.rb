@@ -3,8 +3,8 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
 
   config.action_mailer.smtp_settings = {
-    :user_name => "s3784466@student.rmit.edu.au",
-    :password => "RADAssignment1Email123",
+    :user_name => "apikey",
+    :password => "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",
     :address => "smtp.sendgrid.net",
     :port => 587,
     :authentication => "plain",
