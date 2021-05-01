@@ -1,0 +1,8 @@
+<h1>Subscribe to the newsletter!</h1>
+<form method="post" action="#">
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+<label>Email: <input type="email" name="user_email" required></label>
+<input type="submit" name="submit">
+</form>
+
+<p><%= @email %> added to subscriber list</p>

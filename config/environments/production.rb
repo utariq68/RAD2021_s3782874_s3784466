@@ -1,6 +1,20 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+   
+  config.action_mailer.smtp_settings = {​​​​​
+  :user_name => "apikey",
+  :password => "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",
+  :address => "smtp.sendgrid.net",
+  :port => 587,
+  :authentication => "plain",
+  :enable_starttls_auto => true,
+  :domain => "heroku.com"
+  }​​​​​
+
+ config.action_mailer.delivery_method = :smtp
+
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -60,7 +74,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "RADassignment_production"
+  # config.active_job.queue_name_prefix = "RailsProject_production"
 
   config.action_mailer.perform_caching = false
 
