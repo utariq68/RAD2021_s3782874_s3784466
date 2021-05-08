@@ -24,7 +24,11 @@ class ItemsController < ApplicationController
     # @shopping = Item.where(list: "f")
     @shopping.update(list: "t")
 
-    # figure out how to append popularity by 1
+    @curr_pop = @shopping.popularity
+    @curr_pop += 1
+    @shopping.update(popularity: @curr_pop)
+    @shopping.save
+
     redirect_to root_path
   end
 
@@ -32,6 +36,7 @@ class ItemsController < ApplicationController
     @shopping = Item.find(params[:id])
     # @shopping = Item.where(list: "f")
     @shopping.update(list: "f")
+    @shopping.save
     redirect_to save_path
   end
 end
