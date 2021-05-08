@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    
-    <%= link_to 'Home', 
+
+    <%= link_to 'Home',
     root_path, class: "navbar-brand
     " %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,30 +10,36 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-        <%= link_to 'Men', 
+        <%= link_to 'Men',
     men_path, class: "nav-link active
     " %>
         </li>
 
         <li class="nav-item">
-        <%= link_to 'Women', 
+        <%= link_to 'Women',
     women_path, class: "nav-link active
     " %>
         </li>
 
         <li class="nav-item">
-        <%= link_to 'Save list', 
+        <%= link_to 'Kids',
+    kids_path, class: "nav-link active
+    " %>
+        </li>
+
+        <li class="nav-item">
+        <%= link_to 'Save list',
     save_path, class: "nav-link active
     " %>
         </li>
 
         <li class="nav-item">
-        <%= link_to 'News Letter', 
+        <%= link_to 'News Letter',
     newsletter_path, class: "nav-link active
     " %>
         </li>
 
-       
+
     </div>
   </div>
 </nav>

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get '/women', to: 'items#female'
 
+  get '/kids', to: 'items#kids'
+
   get '/save', to: 'items#save'
 
   get '/save/:id', to: 'items#add', as: 'itemAdd'
@@ -15,6 +17,6 @@ Rails.application.routes.draw do
   get '/newsletter', to: 'news_letter#newsletter'
 
   post '/newsletter', to: 'news_letter#newsletter'
-  
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

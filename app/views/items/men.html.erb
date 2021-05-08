@@ -1,19 +1,18 @@
 <ul>
   <% @shopping.each do |item| %>
- 
+
 
 <!DOCTYPE html>
 <html>
     <head>
         <title>The Generics | Store</title>
         <meta name="description" content="This is the description">
-        <%= stylesheet_link_tag 'style.css' %>
         <script src="store.js" async></script>
     </head>
     <body>
-        
+
         <section class="container content-section">
-            
+
             <div class="shop-items">
                 <div class="shop-item">
                     <span class="shop-item-title"><%= item.title %></span>
@@ -29,7 +28,7 @@
                 </div>
             </div>
         </section>
-    
+
     </body>
 </html>
 
