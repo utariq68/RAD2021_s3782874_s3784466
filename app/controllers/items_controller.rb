@@ -1,6 +1,9 @@
 class ItemsController < ApplicationController
   def index
     @shopping = Item.all
+
+    @top_list = Item.all.where(list: "f").order("popularity desc")
+    @topbanner_item = @top_list.first()
   end
 
   def men

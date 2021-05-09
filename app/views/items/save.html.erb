@@ -1,37 +1,38 @@
-<ul>
-  <% @shopping.each do |item| %>
-
-
 <!DOCTYPE html>
 <html>
     <head>
-        <title>The Generics | Store</title>
-        <meta name="description" content="This is the description">
+        <title>The Generics Store | Save List</title>
+        <meta name="description" content="Save List Page">
         <script src="store.js" async></script>
     </head>
-    <body>
 
+    <body>
         <section class="container content-section">
 
             <div class="shop-items">
-                <div class="shop-item">
-                    <span class="shop-item-title"><%= item.title %></span>
-                    <%= image_tag item.image %>
-                    <div class="shop-item-details">
-                        <span class="shop-item-price">$<%= item.price %></span>
-                        <span class="shop-item-price"><%= item.body %></span>
-                        <span class="shop-item-price"><%= item.category %></span>
 
-                        <a href="<%=itemRemove_path(item) %>">
-                        <button class="btn btn-primary shop-item-button" type="button">-</button>
-                        </a>
+                <% if @shopping.empty? %>
+                <h3>Your saved list is empty!</h3>
+                <% end %>
+                <% @shopping.each do |item| %>
+
+                    <div class="shop-item">
+                        <span class="shop-item-title"><%= item.title %></span>
+                        <%= image_tag item.image %>
+
+                        <div class="shop-item-details">
+                            <span class="shop-item-price">$<%= item.price %></span>
+                            <span class="shop-item-price"><%= item.category %></span>
+
+                            <a href="<%=itemRemove_path(item) %>">
+                            <button class="btn btn-primary shop-item-button" type="button">Remove from save list</button>
+                            </a>
+                        </div>
                     </div>
-                </div>
+
+
+                <% end %>
             </div>
         </section>
     </body>
 </html>
-
-
-<% end %>
-</ul>
