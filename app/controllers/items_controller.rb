@@ -24,7 +24,6 @@ class ItemsController < ApplicationController
 
   def add
     @shopping = Item.find(params[:id])
-    # @shopping = Item.where(list: "f")
     @shopping.update(list: "t")
 
     @curr_pop = @shopping.popularity
@@ -37,7 +36,6 @@ class ItemsController < ApplicationController
 
   def remove
     @shopping = Item.find(params[:id])
-    # @shopping = Item.where(list: "f")
     @shopping.update(list: "f")
     @shopping.save
     redirect_to save_path
