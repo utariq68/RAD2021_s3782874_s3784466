@@ -10,6 +10,8 @@
         <section class="container content-section">
 
             <h2>Popular:</h2>
+
+            <% if @topbanner_item != nil %>
             <div class="shop-items">
 
                 <div class="shop-item">
@@ -27,6 +29,12 @@
                 </div>
 
             </div>
+
+            <% else %>
+
+            <h3>No Items Left</h3>
+
+            <% end %>
         </section>
 
         <section class="container content-section">
@@ -44,9 +52,14 @@
                             <span class="shop-item-price">$<%= item.price %></span>
                             <span class="shop-item-price"><%= item.category %></span>
 
+
+                            <% if item.list == "f" %>
                             <a href="<%=itemAdd_path(item) %>">
                             <button class="btn btn-primary shop-item-button" type="button">Add to save list</button>
                             </a>
+                            <% else %>
+                            <button class="btn btn-primary shop-item-button" type="button">Saved</button>
+                            <% end %>
                         </div>
                     </div>
 

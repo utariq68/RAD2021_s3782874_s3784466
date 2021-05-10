@@ -40,4 +40,7 @@ class ItemsController < ApplicationController
     @shopping.save
     redirect_to save_path
   end
+
+  def item_details
+  end
 end
