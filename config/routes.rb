@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   post '/newsletter', to: 'news_letter#newsletter'
 
-  get '/item', to: 'items#item_details'
+  get '/item/:id', to: 'items#item_details', as:'itemDetails'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

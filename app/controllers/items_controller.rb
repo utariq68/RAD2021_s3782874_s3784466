@@ -42,5 +42,6 @@ class ItemsController < ApplicationController
   end
 
   def item_details
+    @current_item = Item.find(params[:id])
   end
 end

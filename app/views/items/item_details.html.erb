@@ -1,1 +1,49 @@
-DETAILS
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Generics Store | Item <%= @current_item.title %></title>
+        <meta name="description" content="Item Details Page">
+        <script src="store.js" async></script>
+    </head>
+
+    <body>
+      <h1><%= @current_item.title %></h1>
+      <%= image_tag @current_item.image %>
+      <p><%= @current_item.category %></p>
+      <h3><%= @current_item.body %></h3>
+
+      <form method="post">
+        <label>Size:
+        <select>
+          <option>XS</option>
+          <option>S</option>
+          <option>M</option>
+          <option>L</option>
+          <option>XL</option>
+        </select>
+        </label>
+
+        <label>Color:
+        <select>
+          <option>Black</option>
+          <option>White</option>
+          <option>Red</option>
+          <option>Blue</option>
+        </select>
+        </label>
+
+        <label>Quantity:
+        <select>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+        </label>
+
+        <input type="submit" value="Add to bag">
+      </form>
+
+    </body>
+</html>
