@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>The Generics Store | Kids</title>
-        <meta name="description" content="Kids page">
+        <title>The Generics Store | Mens</title>
+        <meta name="description" content="Mens page">
         <script src="store.js" async></script>
     </head>
 
@@ -21,9 +21,13 @@
                             <span class="shop-item-price">$<%= item.price %></span>
                             <span class="shop-item-price"><%= item.category %></span>
 
+                             <% if item.list == "f" %>
                             <a href="<%=itemAdd_path(item) %>">
                             <button class="btn btn-primary shop-item-button" type="button">Add to save list</button>
                             </a>
+                            <% else %>
+                            <button class="btn btn-primary shop-item-button" type="button">Saved</button>
+                            <% end %>
                         </div>
                     </div>
 

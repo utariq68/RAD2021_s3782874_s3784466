@@ -49,16 +49,24 @@
                         <%= image_tag item.image %>
 
                         <div class="shop-item-details">
-                            <span class="shop-item-price">$<%= item.price %></span>
-                            <span class="shop-item-price"><%= item.category %></span>
-
+                            <% if item.list == "t" %>
+                                
+                                <span class="shop-item-price">$<%= item.price %></span>
+                                <span class="shop-item-price">+</span>
+                                <span class="shop-item-price"><%= item.category %></span>
+                            <% else %>
+                                <span class="shop-item-price">$<%= item.price %></span>
+                                <span class="shop-item-price"><%= item.category %></span>
+                            <% end %>
 
                             <% if item.list == "f" %>
                             <a href="<%=itemAdd_path(item) %>">
                             <button class="btn btn-primary shop-item-button" type="button">Add to save list</button>
                             </a>
                             <% else %>
-                            <button class="btn btn-primary shop-item-button" type="button">Saved</button>
+                            <a href="<%=itemRemove_path(item) %>">
+                            <button class="btn btn-primary shop-item-button" type="button">Remove from save list</button>
+                            </a>
                             <% end %>
                         </div>
                     </div>

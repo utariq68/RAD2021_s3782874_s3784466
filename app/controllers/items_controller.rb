@@ -31,14 +31,14 @@ class ItemsController < ApplicationController
     @shopping.update(popularity: @curr_pop)
     @shopping.save
 
-    redirect_to root_path
+    redirect_to save_path
   end
 
   def remove
     @shopping = Item.find(params[:id])
     @shopping.update(list: "f")
     @shopping.save
-    redirect_to save_path
+    redirect_to root_path
   end
 
   def item_details
