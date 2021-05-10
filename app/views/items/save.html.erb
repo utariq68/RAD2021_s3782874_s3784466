@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Generics Store | Save List</title>
+        <meta name="description" content="Save List Page">
+        <script src="store.js" async></script>
+    </head>
+
+    <body>
+        <section class="container content-section">
+
+            <div class="shop-items">
+
+                <% if @shopping.empty? %>
+                <h3>Your saved list is empty!</h3>
+                <% end %>
+                <% @shopping.each do |item| %>
+
+                    <div class="shop-item">
+                        <span class="shop-item-title"><%= item.title %></span>
+                        <a href=<%= itemDetails_path(item) %>><%= image_tag item.image %></a>
+
+                        <div class="shop-item-details">
+                            <span class="shop-item-price">$<%= item.price %></span>
+                            <span class="shop-item-price"><%= item.category %></span>
+
+                            <a href="<%=itemRemove_path(item) %>">
+                            <button class="btn btn-primary shop-item-button" type="button">Remove from save list</button>
+                            </a>
+                        </div>
+                    </div>
+
+
+                <% end %>
+            </div>
+        </section>
+    </body>
+</html>
