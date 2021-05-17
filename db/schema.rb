@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_10_214619) do
+ActiveRecord::Schema.define(version: 2021_05_17_152059) do
+
+  create_table "bags", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.string "category"
+    t.integer "price"
+    t.string "image"
+    t.string "size"
+    t.string "color"
+    t.integer "quantity"
+    t.string "user"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "items", force: :cascade do |t|
     t.string "title"
@@ -22,7 +36,6 @@ ActiveRecord::Schema.define(version: 2021_05_10_214619) do
     t.integer "popularity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "bag"
   end
 
   create_table "users", force: :cascade do |t|

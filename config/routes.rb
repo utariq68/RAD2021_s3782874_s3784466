@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  
+
   get 'authentication/index'
   root "items#index"
 
@@ -31,6 +31,10 @@ Rails.application.routes.draw do
   get '/item/:id', to: 'items#item_details', as:'itemDetails'
 
   get "/auth/twitter/callback", to: "omniauth_callbacks#twitter"
+
+  post '/checkout', to: 'items#checkout'
+
+  get '/checkout', to: 'items#checkout'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,9 +1,8 @@
 class ItemsController < ApplicationController
   def index
-    @shopping = Item.all
-
-    @top_list = Item.all.where(list: "f").order("popularity desc")
-    @topbanner_item = @top_list.first()
+    @shopping = Item.all.where(list: "f").order("popularity desc")
+    @top_list = Item.all
+    @topbanner_item = @top_list.sample
   end
 
   def men
@@ -43,5 +42,9 @@ class ItemsController < ApplicationController
 
   def item_details
     @current_item = Item.find(params[:id])
+  end
+
+  def checkout
+
   end
 end
