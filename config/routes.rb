@@ -38,5 +38,7 @@ Rails.application.routes.draw do
 
   post '/add_bag', to: 'items#add_bag'
 
+  get '/add_bag', to: 'items#add_bag'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
