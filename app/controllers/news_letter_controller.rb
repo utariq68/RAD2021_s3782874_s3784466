@@ -7,5 +7,6 @@ class NewsLetterController < ApplicationController
             NewLetterMailer.new_subscriber_email(@email).deliver
         end
   end
+  
 
 end

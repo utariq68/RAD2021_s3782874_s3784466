@@ -12,38 +12,22 @@
       <p><%= @current_item.category %></p>
       <h3><%= @current_item.body %></h3>
 
-      <form method="post">
-        <label>Size:
-        <select>
-          <option>XS</option>
-          <option>S</option>
-          <option>M</option>
-          <option>L</option>
-          <option>XL</option>
-        </select>
-        </label>
+      <%= form_with url: "/add_bag", method: :post do |form| %>
 
-        <label>Color:
-        <select>
-          <option>Black</option>
-          <option>White</option>
-          <option>Red</option>
-          <option>Blue</option>
-        </select>
-        </label>
+        <%= form.hidden_field :title, value: @current_item.title %>
+        <%= form.hidden_field :body, value: @current_item.body %>
+        <%= form.hidden_field :category, value: @current_item.category %>
+        <%= form.hidden_field :price, value: @current_item.price %>
+        <%= form.hidden_field :image, value: @current_item.image %>
 
-        <label>Quantity:
-        <select>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-        </label>
+        <label>Size: <%= form.select :size, ['XS', 'S', 'M', 'L', 'XL'] %></label>
 
-        <input type="submit" value="Add to bag">
-      </form>
+        <label>Color: <%= form.select :color, ['Black', 'White', 'Red', 'Blue'] %></label>
+
+        <label>Quantity: <%= form.select :quantity, ['1', '2', '3', '4', '5'] %></label>
+
+        <%= form.submit "Add to bag" %>
+      <% end %>
 
     </body>
 </html>

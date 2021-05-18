@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Generics Store | Shopping Bag</title>
+        <meta name="description" content="Shopping Bag Page">
+        <script src="store.js" async></script>
+    </head>
+
+    <body>
+        <section class="container content-section">
+          <h3>Shopping bag: <%= @bag_items.count %> items</h3>
+
+            <div class="shop-items">
+
+                <% if @bag_items.empty? %>
+                <h3>Your bag is empty!</h3>
+                <% end %>
+
+
+                <% @bag_items.each do |item| %>
+                    <div class="shop-item">
+                        <span class="shop-item-title"><%= item.title %></span>
+                        <%= image_tag item.image %>
+                        <div class="shop-item-details">
+                            <span class="shop-item-price">$<%= item.price %></span>
+                            <span class="shop-item-price"><%= item.category %></span>
+                            <span class="shop-item-price"><%= item.size %> - <%= item.color %> - <%= item.quantity %></span>
+
+                            <a href="<%=removeBag_path(item) %>">
+                            <button class="btn btn-primary shop-item-button" type="button">Remove from bag</button>
+                            </a>
+                        </div>
+                    </div>
+                <% end %>
+
+                <h3>Total: $<%= @total %></h3>
+                <a href="/checkout">
+                  <button class="btn btn-primary shop-item-button" type="button">Checkout</button>
+                </a>
+            </div>
+        </section>
+    </body>
+</html>

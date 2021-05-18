@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         <title>The Generics Store | Home</title>
         <meta name="description" content="Home page">
@@ -8,8 +9,6 @@
 
     <body>
         <section class="container content-section">
-
-            <h2>Popular:</h2>
 
             <% if @topbanner_item != nil %>
             <div class="shop-items">
@@ -39,7 +38,7 @@
 
         <section class="container content-section">
 
-            <h2>All Items:</h2>
+            <h2>Popular:</h2>
             <div class="shop-items">
 
                 <% @shopping.each do |item| %>
@@ -50,7 +49,7 @@
 
                         <div class="shop-item-details">
                             <% if item.list == "t" %>
-                                
+
                                 <span class="shop-item-price">$<%= item.price %></span>
                                 <span class="shop-item-price">+</span>
                                 <span class="shop-item-price"><%= item.category %></span>
@@ -71,9 +70,9 @@
                         </div>
                     </div>
 
-
                 <% end %>
             </div>
         </section>
     </body>
+    <br><br><br><br><br><br><br>
 </html>
