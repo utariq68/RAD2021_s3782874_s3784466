@@ -36,5 +36,7 @@ Rails.application.routes.draw do
 
   get '/checkout', to: 'items#checkout'
 
+  post '/add_bag', to: 'items#add_bag'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

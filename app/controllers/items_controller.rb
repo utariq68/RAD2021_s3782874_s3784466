@@ -44,6 +44,10 @@ class ItemsController < ApplicationController
     @current_item = Item.find(params[:id])
   end
 
+  def add_bag
+
+  end
+
   def checkout
 
   end
