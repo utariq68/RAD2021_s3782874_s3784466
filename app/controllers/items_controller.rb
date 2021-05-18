@@ -59,6 +59,7 @@ class ItemsController < ApplicationController
 
       new_bag = Bag.new(title: title, body: body, category: category, price: price, image: image, size: size, color: color, quantity: quantity, user: email)
       new_bag.save
+      redirect_to save_path
     else
       redirect_to login_path
     end
@@ -95,6 +96,24 @@ class ItemsController < ApplicationController
       end
 
       redirect_to bag_path
+    end
+  end
+
+  def edit_subscription
+    user_email = current_user.email
+    @message = nil
+
+    check = Subscriber.all.where(email: user_email)
+
+    if check.exists?
+      check.each do |email|
+        email.destroy
+      end
+      @message = 'Removed from subscriber list!'
+    else
+      new_sub = Subscriber.new(email: user_email)
+      new_sub.save
+      @message = 'Added to subscriber list!'
     end
   end
 end

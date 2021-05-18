@@ -10,7 +10,7 @@
 
 <center><h1>Edit your details <%= link_to 'Edit Details', edit_user_path(current_user), class: "btn btn-primary" %></h1> </center>
 
-<center><h1>Edit your details <%= link_to 'Save List', save_path, class: "btn btn-primary" %></h1> </center>
+<center><h1>Edit subscription <%= link_to 'Subscription', edit_subscription_path , class: "btn btn-primary" %></h1> </center>
 
 <center><%= link_to 'LOGOUT', logout_path, class: "btn btn-danger" %></center>
 
@@ -22,6 +22,6 @@
 
 <h3>OR</h3>
 
-<h3> <%= link_to 'SIGN UP', signup_path, class: "btn btn-primary" %> AND LOGIN</h3> 
+<h3> <%= link_to 'SIGN UP', signup_path, class: "btn btn-primary" %> AND LOGIN</h3>
 
 <% end %>

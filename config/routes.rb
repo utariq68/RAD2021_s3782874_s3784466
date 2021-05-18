@@ -44,5 +44,7 @@ Rails.application.routes.draw do
 
   get '/remove_bag/:id', to: 'items#remove_bag', as: 'removeBag'
 
+  get '/edit_subscription', to: 'items#edit_subscription'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
