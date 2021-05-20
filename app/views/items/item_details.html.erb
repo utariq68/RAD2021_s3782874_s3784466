@@ -8,7 +8,7 @@
 
     <body>
       <h1><%= @current_item.title %></h1>
-      <%= image_tag @current_item.image %>
+      <%= image_tag @current_item.image, :size => "260x180" %>
       <p><%= @current_item.category %></p>
       <h3><%= @current_item.body %></h3>
 

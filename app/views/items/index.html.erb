@@ -15,15 +15,24 @@
 
                 <div class="shop-item">
                     <span class="shop-item-title"><%= @topbanner_item.title %></span>
-                    <%= image_tag @topbanner_item.image %>
+                    <%= image_tag @topbanner_item.image, :size => "500x500"%>
 
                     <div class="shop-item-details">
                         <span class="shop-item-price">$<%= @topbanner_item.price %></span>
+                        
                         <span class="shop-item-price"><%= @topbanner_item.category %></span>
-
-                        <a href="<%= itemAdd_path(@topbanner_item) %>">
-                        <button class="btn btn-primary shop-item-button" type="button">Add to save list</button>
-                        </a>
+ 
+                        <% if @topbanner_item.list == "f" %>
+                                <a href="<%=addWish_path(@topbanner_item) %>">
+                                    <button class="btn btn-primary shop-item-button" type="button">Add to save list</button>
+                                </a>
+                            <% else %>
+                                <a href="<%=itemRemove_path(@topbanner_item) %>">
+                                    <button class="btn btn-primary shop-item-button" type="button">Remove from save list</button>
+                                </a>
+                        <% end %>
+                    
+                    
                     </div>
                 </div>
 
@@ -45,7 +54,7 @@
 
                     <div class="shop-item">
                         <span class="shop-item-title"><%= item.title %></span>
-                        <%= image_tag item.image %>
+                        <%= image_tag item.image, :size => "300x300" %>
 
                         <div class="shop-item-details">
                             <% if item.list == "t" %>
@@ -59,7 +68,7 @@
                             <% end %>
 
                             <% if item.list == "f" %>
-                            <a href="<%=itemAdd_path(item) %>">
+                            <a href="<%=addWish_path(item) %>">
                             <button class="btn btn-primary shop-item-button" type="button">Add to save list</button>
                             </a>
                             <% else %>

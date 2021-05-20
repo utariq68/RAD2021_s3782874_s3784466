@@ -1,7 +1,9 @@
 class NewLetterMailer < ApplicationMailer
-    default :from => 'rada1email123@gmail.com'
+    default from: "railscasts@example.com"
 
-    def new_subscriber_email(email)
-    mail(:to => email, :subject => "Thank you for subscribing!")
-    end
+  def signup_confirmation(user)
+    # @user = user
+    email = user
+    mail to: email, subject: "Subscribing to RD Clothing Newsletter"
+  end
 end
