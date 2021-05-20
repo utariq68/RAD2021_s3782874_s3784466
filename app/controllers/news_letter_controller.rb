@@ -4,7 +4,8 @@ class NewsLetterController < ApplicationController
   end
   def newsletter
     @email = params[:email]
-    NewLetterMailer.signup_confirmation(@email).deliver
+    # NewLetterMailer.signup_confirmation(@email).deliver()
+    UserMailer.signup_confirmation(@email).deliver
         # if @email != nil
 
         #   existing = Subscriber.all.where(email: @email)
@@ -20,6 +21,5 @@ class NewsLetterController < ApplicationController
         # end
     redirect_to root_path
   end
-
 
 end
