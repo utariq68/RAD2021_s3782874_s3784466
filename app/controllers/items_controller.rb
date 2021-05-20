@@ -62,7 +62,7 @@ class ItemsController < ApplicationController
   end
 
   def item_details
-    @current_item = Item.find(params[:id])
+    @current_item = Wishlist.find(params[:id])
   end
 
   def add_bag
@@ -146,6 +146,7 @@ class ItemsController < ApplicationController
         email.destroy
       end
       @message = 'Removed from subscriber list!'
+
     else
       new_sub = Subscriber.new(email: user_email)
       new_sub.save
