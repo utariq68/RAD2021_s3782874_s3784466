@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root "items#index"
 
   get 'authentication/index'
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :users
 
   # resources :sessions, only: [:new, :create, :destroy]
-  
+
   get "signup", to: "users#new", as: "signup"
 
   get "login", to: "sessions#new"
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
 
   get '/newCollection', to: 'items#newCollection'
- 
+
   get '/men', to: 'items#men'
 
   get '/women', to: 'items#female'
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get '/save', to: 'items#save'
 
   get 'wishlist', to: 'items#wishlist'
-  
+
   get '/wishAdd/:id', to: 'items#wishAdd', as: 'addWish'
 
   get '/wishRemove/:id', to: 'items#wishRemove', as: 'itemRemove'
@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   post '/newsletter', to: 'news_letter#newsletter'
   get '/newsl', to: 'news_letter#newsl'
 
-  
+
 
   get '/item/:id', to: 'items#item_details', as:'itemDetails'
 
@@ -59,6 +59,10 @@ Rails.application.routes.draw do
   get '/remove_bag/:id', to: 'items#remove_bag', as: 'removeBag'
 
   get '/edit_subscription', to: 'items#edit_subscription'
+
+  get '/filteredItems', to: 'items#filteredItems'
+
+  post '/filteredItems', to: 'items#filteredItems'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

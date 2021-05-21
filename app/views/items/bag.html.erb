@@ -23,7 +23,7 @@
             <p class="mb-5 text-center">
                 <i class="text-info font-weight-bold"><h3>Shopping bag: <%= @bag_items.count %> items</h3></p>
 
-                
+
             <table id="shoppingCart" class="table table-condensed table-responsive">
 
             <% if @bag_items.empty? %>
@@ -40,14 +40,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                     <tr>
-                     
+
                         <td data-th="Product">
                             <div class="row">
                                 <div class="col-md-3 text-left">
                                      <%= image_tag item.image, :size => "100x100" %>
-                                     
+
 
                                 </div>
                                 <div class="col-md-9 text-left mt-sm-2">
@@ -63,14 +63,14 @@
 							<a href="<%=removeBag_path(item) %>"><button class= "btn btn-danger">Remove</button></a>
                         </td>
                         </div>
-                        
+
                     </tr>
                     <% end %>
                 </tbody>
             </table>
             <div class="float-right text-right">
                 <h4>Subtotal:</h4>
-                <h1>$<%= @sumOfItems %></h1>
+                <h1>$<%= @total %></h1>
             </div>
         </div>
     </div>
@@ -79,7 +79,7 @@
             <a href="/checkout" class="btn btn-primary mb-4 btn-lg pl-5 pr-5">Checkout</a>
         </div>
         <div class="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
-            
+
                 <a href="/" class="btn btn-primary mb-4 btn-lg pl-5 pr-5">Continue Shopping</a>
         </div>
     </div>

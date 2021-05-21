@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+
   def index
     @shopping = Item.all.where(list: "f").or(Item.all.where(list: "t")).order("popularity desc")
     @top_list = Item.all
@@ -120,7 +121,7 @@ class ItemsController < ApplicationController
     else
       redirect_to login_path
     end
-  end 
+  end
 
   def checkout
     if current_user
@@ -152,5 +153,11 @@ class ItemsController < ApplicationController
       new_sub.save
       @message = 'Added to subscriber list!'
     end
+  end
+
+  def filteredItems
+
+    @test = params[:test]
+    puts "ADJSNAJSNDASJNDADNKJANDJKASNDJKANDJKANSDJKNADJKANKJSD" + @test.to_s
   end
 end
