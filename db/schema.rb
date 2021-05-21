@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2021_05_17_152059) do
-=======
 ActiveRecord::Schema.define(version: 2021_05_21_035628) do
->>>>>>> main
 
   create_table "bags", force: :cascade do |t|
     t.string "title"
@@ -40,8 +36,6 @@ ActiveRecord::Schema.define(version: 2021_05_21_035628) do
     t.integer "popularity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-<<<<<<< HEAD
-=======
     t.string "tags"
   end
 
@@ -49,7 +43,6 @@ ActiveRecord::Schema.define(version: 2021_05_21_035628) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
->>>>>>> main
   end
 
   create_table "users", force: :cascade do |t|
@@ -57,11 +50,6 @@ ActiveRecord::Schema.define(version: 2021_05_21_035628) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-<<<<<<< HEAD
-    t.index ["email"], name: "index_users_on_email", unique: true
-  end
-
-=======
     t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
@@ -78,5 +66,4 @@ ActiveRecord::Schema.define(version: 2021_05_21_035628) do
     t.datetime "updated_at", null: false
   end
 
->>>>>>> main
 end

@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-<<<<<<< HEAD
-<%= button_to "connect twitter", "auth/twitter", method: :post, class: "btn btn-primary" %>
-
-=======
->>>>>>> main
     <head>
         <title>The Generics Store | Home</title>
         <meta name="description" content="Home page">
@@ -20,17 +15,6 @@
 
                 <div class="shop-item">
                     <span class="shop-item-title"><%= @topbanner_item.title %></span>
-<<<<<<< HEAD
-                    <%= image_tag @topbanner_item.image %>
-
-                    <div class="shop-item-details">
-                        <span class="shop-item-price">$<%= @topbanner_item.price %></span>
-                        <span class="shop-item-price"><%= @topbanner_item.category %></span>
-
-                        <a href="<%= itemAdd_path(@topbanner_item) %>">
-                        <button class="btn btn-primary shop-item-button" type="button">Add to save list</button>
-                        </a>
-=======
                     <%= image_tag @topbanner_item.image, :size => "500x500"%>
 
                     <div class="shop-item-details">
@@ -49,7 +33,6 @@
                         <% end %>
 
 
->>>>>>> main
                     </div>
                 </div>
 
@@ -64,8 +47,6 @@
 
         <section class="container content-section">
 
-<<<<<<< HEAD
-=======
             <div>
                 <%= csrf_meta_tags %>
                 <h3>Filters:</h3>
@@ -75,7 +56,6 @@
                 </form>
             </div>
 
->>>>>>> main
             <h2>Popular:</h2>
             <div class="shop-items">
 
@@ -83,11 +63,7 @@
 
                     <div class="shop-item">
                         <span class="shop-item-title"><%= item.title %></span>
-<<<<<<< HEAD
-                        <%= image_tag item.image %>
-=======
                         <%= image_tag item.image, :size => "300x300" %>
->>>>>>> main
 
                         <div class="shop-item-details">
                             <% if item.list == "t" %>
@@ -101,11 +77,7 @@
                             <% end %>
 
                             <% if item.list == "f" %>
-<<<<<<< HEAD
-                            <a href="<%=itemAdd_path(item) %>">
-=======
                             <a href="<%=addWish_path(item) %>">
->>>>>>> main
                             <button class="btn btn-primary shop-item-button" type="button">Add to save list</button>
                             </a>
                             <% else %>

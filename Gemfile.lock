@@ -120,10 +120,7 @@ GEM
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
-<<<<<<< HEAD
-=======
     pg (1.2.3)
->>>>>>> main
     public_suffix (4.0.6)
     puma (3.12.6)
     racc (1.5.2)
@@ -211,10 +208,7 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
-<<<<<<< HEAD
-=======
   arm64-darwin-20
->>>>>>> main
   x86_64-darwin-18
   x86_64-darwin-20
   x86_64-linux
@@ -230,10 +224,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   omniauth-rails_csrf_protection (~> 1.0)
   omniauth-twitter (~> 1.4)
-<<<<<<< HEAD
-=======
   pg
->>>>>>> main
   puma (~> 3.11)
   rails (~> 5.2.4, >= 5.2.4.1)
   sass-rails (~> 5.0)
@@ -250,8 +241,4 @@ RUBY VERSION
    ruby 2.6.7p197
 
 BUNDLED WITH
-<<<<<<< HEAD
-   2.2.16
-=======
    2.2.17
->>>>>>> main
