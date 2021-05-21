@@ -18,7 +18,11 @@
 
                     <div class="shop-item">
                         <span class="shop-item-title"><%= item.title %></span>
+<<<<<<< HEAD
                         <a href=<%= itemDetails_path(item) %>><%= image_tag item.image %></a>
+=======
+                        <a href=<%= itemDetails_path(item) %>><%= image_tag item.image, :size => "300x300" %></a>
+>>>>>>> main
 
                         <div class="shop-item-details">
                             <span class="shop-item-price">$<%= item.price %></span>

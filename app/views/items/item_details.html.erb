@@ -8,6 +8,7 @@
 
     <body>
       <h1><%= @current_item.title %></h1>
+<<<<<<< HEAD
       <%= image_tag @current_item.image %>
       <p><%= @current_item.category %></p>
       <h3><%= @current_item.body %></h3>
@@ -47,3 +48,28 @@
 
     </body>
 </html>
+=======
+      <%= image_tag @current_item.image, :size => "260x180" %>
+      <p><%= @current_item.category %></p>
+      <h3><%= @current_item.body %></h3>
+
+      <%= form_with url: "/add_bag", method: :post do |form| %>
+
+        <%= form.hidden_field :title, value: @current_item.title %>
+        <%= form.hidden_field :body, value: @current_item.body %>
+        <%= form.hidden_field :category, value: @current_item.category %>
+        <%= form.hidden_field :price, value: @current_item.price %>
+        <%= form.hidden_field :image, value: @current_item.image %>
+
+        <label>Size: <%= form.select :size, ['XS', 'S', 'M', 'L', 'XL'] %></label>
+
+        <label>Color: <%= form.select :color, ['Black', 'White', 'Red', 'Blue'] %></label>
+
+        <label>Quantity: <%= form.select :quantity, ['1', '2', '3', '4', '5'] %></label>
+
+        <%= form.submit "Add to bag" %>
+      <% end %>
+
+    </body>
+</html>
+>>>>>>> main

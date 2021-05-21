@@ -1,5 +1,6 @@
 Rails.application.configure do
 
+<<<<<<< HEAD
   config.action_mailer.smtp_settings = {​​​​​
   :user_name => "apikey",
   :password => "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",
@@ -11,6 +12,34 @@ Rails.application.configure do
   }​​​​​
 
  config.action_mailer.delivery_method = :smtp
+=======
+  # SendGrid (Doesn't work)
+  # config.action_mailer.smtp_settings = {
+  #   :user_name => "apikey",
+  #   :password => "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",
+  #   :address => "smtp.sendgrid.net",
+  #   :port => 587,
+  #   :authentication => "plain",
+  #   :enable_starttls_auto => true,
+  #   :domain => "heroku.com"
+  # }
+
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.perform_caching = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'gmail.com',
+    user_name:            'assrapid2021@gmail.com',
+    password:             'rapid2021',
+    authentication:       'plain'
+
+  }
+
+  config.action_mailer.delivery_method = :smtp
+>>>>>>> main
 
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -104,4 +133,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 end
