@@ -1,15 +1,19 @@
 <p id=”alert”><%= alert %></p>
-<h1>Login</h1>
-<%= form_tag sessions_path do |form| %>
+
+<br><br><br>
+
+<center><h1>Login</h1></center>
+<%= form_with url: login_path do |form| %>
   <div class=”field”>
-    <%= label_tag :email %>
-    <%= text_field_tag :email %>
+    <center><%= form.label :email %></center>
+    <center><%= form.text_field :email %></center>
   </div>
   <div class=”field”>
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
+    <center><%= form.label :password %></center>
+    <center><%= form.password_field :password %></center>
   </div>
+  <center><%= link_to "sign up", signup_path %></center>
   <div class=”actions”>
-    <%= submit_tag login_path %>
+    <center><%= form.submit "LOGIN", class: "btn btn-primary" %></center>
   </div>
 <% end %>
