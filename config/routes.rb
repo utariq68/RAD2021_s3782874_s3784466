@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
   # get '/remove/:id', to: 'items#remove', as: 'itemRemove'
   post '/newsletter', to: 'news_letter#newsletter'
-  get '/newsl', to: 'news_letter#newsl'
+  get '/newsletter', to: 'news_letter#newsletter'
 
 
 

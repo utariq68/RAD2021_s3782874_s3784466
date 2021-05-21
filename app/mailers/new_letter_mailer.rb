@@ -1,9 +1,9 @@
 class NewLetterMailer < ApplicationMailer
-    default from: "railscasts@example.com"
+    default from: "rada1email123@gmail.com"
 
-  def signup_confirmation(user)
-    # @user = user
-    email = user
-    mail to: email, subject: "Subscribing to RD Clothing Newsletter"
+  def signup_confirmation(email)
+
+    @email = email
+    mail(:to => @email, :subject => 'Thanks for subscribing to The Generics Clothing newsletter!')
   end
 end
