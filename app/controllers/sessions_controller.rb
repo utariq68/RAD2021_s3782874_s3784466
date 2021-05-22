@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
   
   def create
     user = User.find_by_email(params[:email])
+
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       
@@ -11,6 +12,7 @@ class SessionsController < ApplicationController
       persistance = Wishlist.all.where(email: nil)
       persistance.update(email: params[:email])
       redirect_to root_path, notice: "Logged in!"
+
     else
       flash.now[:alert] = "Email or password is invalid"
       render "new"

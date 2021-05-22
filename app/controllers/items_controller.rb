@@ -35,6 +35,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def summary
+    @savelist = Wishlist.all
+  end
+
   def add
     @shopping = Item.find(params[:id])
     @shopping.update(list: "t")

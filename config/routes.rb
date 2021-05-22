@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   get 'items/admin'
 
+  get 'items/set'
+
   get '/men', to: 'items#men'
 
   get '/women', to: 'items#female'
@@ -31,6 +33,8 @@ Rails.application.routes.draw do
   get '/save', to: 'items#save'
 
   get 'wishlist', to: 'items#wishlist'
+
+  get 'summary', to: 'items#summary'
 
   get '/wishAdd/:id', to: 'items#wishAdd', as: 'addWish'
 

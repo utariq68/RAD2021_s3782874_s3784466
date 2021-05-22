@@ -39,12 +39,34 @@
             save_path, class: "nav-link active
           " %>
         </li>
+      
+      <% if current_user %>
+          
+        <% if current_user.email == "admin" %>
 
+      <li class="nav-item">
+          <%= link_to 'Account',
+            items_admin_path, class: "nav-link active
+          " %>
+        </li>
+        
+        <% else %>
+        
         <li class="nav-item">
           <%= link_to 'Account',
             items_profile_path, class: "nav-link active
           " %>
         </li>
+        <%end%>
+
+        <% else %>
+        <li class="nav-item">
+          <%= link_to 'Account',
+            items_profile_path, class: "nav-link active
+          " %>
+        </li>
+      <% end %>
+      
  
       </ul>
       
