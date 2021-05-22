@@ -27,7 +27,12 @@ class ItemsController < ApplicationController
   end
 
   def wishlist
-    @savelist=Wishlist.all
+    if current_user
+      user = User.find(session[:user_id])
+      @savelist=Wishlist.all.where(email: user.email)
+    else
+      @savelist=Wishlist.all.where(email: nil)
+    end
   end
 
   def add
@@ -46,12 +51,31 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     newItem = Wishlist.new(title: @item.title, body: @item.body, price: @item.price, image:@item.image, list:@item.list, popularity:@item.popularity)
     newItem.save
+    if current_user
+      user = User.find(session[:user_id])
+      newItem.update(email: user.email)
+    end
     redirect_to wishlist_path
   end
 
   def wishRemove
     @item = Wishlist.find(params[:id])
+    # Wishlist.all.each do |wish| 
+    #   if @item.title == wish.title
+    #     wish.destroy
+    #   end
+    # end
     @item.destroy
+    redirect_to wishlist_path
+  end
+
+  def removeWish
+    @item = Item.find(params[:id])
+    Wishlist.all.each do |wish| 
+      if @item.title == wish.title
+        wish.destroy
+      end
+    end
     redirect_to wishlist_path
   end
 
@@ -83,6 +107,18 @@ class ItemsController < ApplicationController
       new_bag.save
       redirect_to bag_path
     else
+      title = params[:title]
+      body = params[:body]
+      category = params[:category]
+      price = params[:price].to_i
+      image = params[:image]
+      size = params[:size]
+      color = params[:color]
+      quantity = params[:quantity].to_i
+
+
+      new_bag = Bag.new(title: title, body: body, category: category, price: price, image: image, size: size, color: color, quantity: quantity)
+      new_bag.save
       redirect_to login_path
     end
   end
@@ -124,16 +160,38 @@ class ItemsController < ApplicationController
   end
 
   def checkout
-    if current_user
+
+    if current_user.times == nil
+
       current_user_email = current_user.email
       @bag_items = Bag.all.where(user: current_user_email)
 
       @bag_items.each do |item|
         item.destroy
       end
+      
+      redirect_to rating_path
 
-      redirect_to bag_path
+    else
+
+      current_user_email = current_user.email
+      @bag_items = Bag.all.where(user: current_user_email)
+
+      @bag_items.each do |item|
+      item.destroy
+
+      redirect_to root_path
     end
+  end
+  end
+
+  def rating
+    rating = params[:quantity]
+    
+    if current_user.times == nil
+      current_user.update(times: 2)
+    end
+
   end
 
   def edit_subscription
@@ -154,6 +212,15 @@ class ItemsController < ApplicationController
       @message = 'Added to subscriber list!'
     end
   end
+
+  def search
+    @searchItem = params[:search]
+    @shopping =  Item.all.where(
+        "title like ?", 
+        "%#{@searchItem}%"
+    )
+  end
+
 
   def filteredItems
 

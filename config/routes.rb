@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   get '/newCollection', to: 'items#newCollection'
 
+  get 'items/admin'
+
   get '/men', to: 'items#men'
 
   get '/women', to: 'items#female'
@@ -34,17 +36,26 @@ Rails.application.routes.draw do
 
   get '/wishRemove/:id', to: 'items#wishRemove', as: 'itemRemove'
 
+  get '/removeWish/:id', to: 'items#removeWish', as: 'removeItem'
+
   # get '/save/:id', to: 'items#add', as: 'itemAdd'
 
   # get '/remove/:id', to: 'items#remove', as: 'itemRemove'
-  post '/newsletter', to: 'news_letter#newsletter'
+
+  post "/newsletter", to: "news_letter#newsletter"
+  
   get '/newsletter', to: 'news_letter#newsletter'
 
+  post '/search', to: 'items#search'
+  
+  get '/search', to: 'items#search'
 
+  post '/rating', to: 'items#rating'
+  get '/rating', to: 'items#rating'
 
   get '/item/:id', to: 'items#item_details', as:'itemDetails'
 
-  get "/auth/twitter/callback", to: "omniauth_callbacks#twitter"
+  get "/auth/:provider/callback", to: "omniauth_callbacks#twitter"
 
   post '/checkout', to: 'items#checkout'
 

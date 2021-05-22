@@ -1,0 +1,9 @@
+
+
+      <%= form_with url: rating_path, method: :post do |form| %>
+
+        <label>Rating: <%= form.select :quantity, ['GOOD', 'BAD', 'AVERAGE'] %></label>
+
+        <%= form.submit "Add Rating" %>
+      <% end %>
+
