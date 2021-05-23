@@ -295,4 +295,8 @@ class ItemsController < ApplicationController
   def subs
     @show = Subscriber.all
   end
+
+  def help_and_support
+    #static page
+  end
 end

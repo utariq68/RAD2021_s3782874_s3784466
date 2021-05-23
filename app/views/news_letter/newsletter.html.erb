@@ -10,7 +10,7 @@
 
 <%= form_with url: newsletter_path do |form| %>
   <div class="mb-3">
-    <%= form.text_field :email, class: "form-control", placeholder: "Email" %>
+    <%= form.email_field :email, class: "form-control", placeholder: "Email" %>
   </div>
 
   <div class="mb-3">
