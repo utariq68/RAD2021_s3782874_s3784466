@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   get 'items/set'
 
-  get 'adminrate', to: 'items#adminRate'
+  get '/allRatings', to: 'items#adminRate'
 
   get 'subs', to: 'items#subs'
 
@@ -92,6 +92,8 @@ Rails.application.routes.draw do
   post '/forgot', to: 'users#forgot'
 
   get '/forgot/:linked', to: 'users#forgot'
+
+  get '/all_purchases', to: 'items#allProducts'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

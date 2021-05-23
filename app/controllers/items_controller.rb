@@ -246,13 +246,50 @@ class ItemsController < ApplicationController
   end
 
   def filteredItems
+    tag_demo = params[:demo]
+    tag_type = params[:type]
 
-    @test = params[:test]
-    puts "ADJSNAJSNDASJNDADNKJANDJKASNDJKANDJKANSDJKNADJKANKJSD" + @test.to_s
+    tag_black = params[:black]
+    tag_white = params[:white]
+    tag_red = params[:red]
+    tag_blue = params[:blue]
+
+    tag_xs = params[:xs]
+    tag_s = params[:s]
+    tag_m = params[:m]
+    tag_l = params[:l]
+    tag_xl = params[:xl]
+
+    tag_all = params[:all]
+
+    if tag_demo == nil and tag_type == nil
+      if tag_black != nil or tag_white != nil or tag_red != nil or tag_blue != nil or tag_xs != nil or tag_s != nil or tag_m != nil or tag_l != nil or tag_xl != nil
+        @shopping = Item.all
+      else
+        @shopping = nil
+      end
+    else
+
+      if tag_demo != nil and tag_type == nil
+        @shopping = Item.where(category: tag_demo)
+      elsif tag_demo == nil and tag_type != nil
+        @shopping = Item.where("tags like ?", "%#{tag_type}%")
+      else
+        @shopping = Item.where(category: tag_demo)
+        @shopping = @shopping.where("tags like ?", "%#{tag_type}%")
+      end
+
+    end
+
+    if tag_all != nil
+      @shopping = Item.all
+    end
+
+
   end
 
   def allProducts
-    @savelist = Bag.all
+    @purchases = Product.all
   end
 
   def subs

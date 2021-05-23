@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+<br><br><br><br><br>
+
 <html>
     <head>
-        <title>The Generics Store | Save List</title>
-        <meta name="description" content="Save List Page">
+        <title>The Generics Store | All Purchases</title>
+        <meta name="description" content="All Purchases Page">
         <script src="store.js" async></script>
     </head>
 
@@ -11,25 +13,22 @@
 
             <div class="shop-items">
 
-                <% if @savelist.empty? %>
+                <% if @purchases.empty? %>
                 <h3>Your saved list is empty!</h3>
                 <% end %>
-                <% @savelist.each do |i| %>
+                <center>
+                <ul>
+                <% @purchases.each do |i| %>
 
-                    <div class="shop-item">
-                        <span class="shop-item-title"><%= i.title %></span>
-                        <a href=<%= itemDetails_path(i) %>><%= image_tag i.image, :size => "300x300" %></a>
-
-                        <div class="shop-item-details">
-                            <span class="shop-item-price">$<%= i.price %></span>
-                            <span class="shop-item-price"><%= i.category %></span>
-
-                        </div>
-                    </div>
-
-
+                    <%= image_tag i.image, :size => "150x150" %>
+                    <li><%= i.title %> purchased by <%= i.email %> on <%= i.created_at %></li>
+                    <br><br><br><br><br>
                 <% end %>
+                </ul>
+                </center>
             </div>
         </section>
     </body>
 </html>
+
+<br><br><br><br><br>

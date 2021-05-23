@@ -35,7 +35,7 @@
                                             <% addedToSavelist = true %>
                                         <% end %>
                                     <% end%>
-                                    
+
                             <% end%>
                             <% end %>
                             <% if addedToSavelist == false %>
@@ -44,7 +44,7 @@
                                 </a>
                             <% else %>
                                 <a href="<%=removeItem_path(@topbanner_item) %>">
-                                
+
                                 <button class="btn btn-primary shop-item-button" type="button"><i class="material-icons" style="font-size:24px;color:red">favorite</i></button>
                                 </a>
                             <% end %>
@@ -65,19 +65,47 @@
         <section class="container content-section">
 
             <div>
+                <center>
                 <h3>Filters:</h3>
-                <form id="filters" method="post" enctype="multipart/form-data" action="/filteredItems" accept-charset="UTF-8">
+                <%= form_tag(filteredItems_path, method: "post") do %>
 
-                </form>
+                    <%= label_tag(:all, "All") %><%= check_box_tag(:all) %><br><br>
+
+                    <%= label_tag(:demo_men, "Men") %><%= radio_button_tag(:demo, "m") %>
+                    <%= label_tag(:demo_women, "Women") %><%= radio_button_tag(:demo, "f") %>
+                    <%= label_tag(:demo_kids, "Kids") %><%= radio_button_tag(:demo, "k") %>
+                    <p>Demographic</p>
+
+                    <%= label_tag(:type_shirt, "Shirt") %><%= radio_button_tag(:type, "shirt") %>
+                    <%= label_tag(:type_pants, "Pants") %><%= radio_button_tag(:type, "pants") %>
+                    <p>Type</p>
+
+                    <%= label_tag(:black, "Black") %><%= check_box_tag(:black) %>
+                    <%= label_tag(:white, "White") %><%= check_box_tag(:White) %>
+                    <%= label_tag(:red, "Red") %><%= check_box_tag(:red) %>
+                    <%= label_tag(:blue, "Blue") %><%= check_box_tag(:blue) %>
+                    <p>Color</p>
+
+                    <%= label_tag(:xs, "Extra Small") %><%= check_box_tag(:xs) %>
+                    <%= label_tag(:s, "Small") %><%= check_box_tag(:s) %>
+                    <%= label_tag(:m, "Medium") %><%= check_box_tag(:m) %>
+                    <%= label_tag(:l, "Large") %><%= check_box_tag(:l) %>
+                    <%= label_tag(:xl, "Extra Large") %><%= check_box_tag(:xl) %>
+                    <p>Size</p>
+
+                    <%= submit_tag("Filter") %>
+
+                <% end %>
+                </center>
             </div>
 
             <h2>Popular:</h2>
             <div class="shop-items">
 
-            
-                
+
+
                 <% @shopping.each do |item| %>
-                
+
                     <div class="shop-item">
                         <span class="shop-item-title"><%= item.title %></span>
                         <%= image_tag item.image, :size => "300x300" %>
@@ -92,7 +120,7 @@
                                 <span class="shop-item-price">$<%= item.price %></span>
                                 <span class="shop-item-price"><%= item.category %></span>
                             <% end %>
-                            
+
                             <% addedToSavelist = false %>
                             <% Wishlist.all.each do |wish| %>
                                 <% if wish.title == item.title %>
@@ -106,7 +134,7 @@
                                             <% addedToSavelist = true %>
                                         <% end %>
                                     <% end%>
-                                    
+
                                 <% end%>
                             <% end %>
                             <% if addedToSavelist == false %>
@@ -115,7 +143,7 @@
                                 </a>
                             <% else %>
                                 <a href="<%=removeItem_path(item) %>">
-                                
+
                                 <button class="btn btn-primary shop-item-button" type="button"><i class="material-icons" style="font-size:24px;color:red">favorite</i></button>
                                 </a>
                             <% end %>

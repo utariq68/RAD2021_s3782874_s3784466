@@ -4,6 +4,7 @@
         <title>The Generics Store | Save List</title>
         <meta name="description" content="Save List Page">
         <script src="store.js" async></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
 
     <body>
@@ -25,7 +26,7 @@
                             <span class="shop-item-price"><%= i.category %></span>
 
                             <a href="<%=itemRemove_path(i) %>">
-                            <button class="btn btn-primary shop-item-button" type="button">Remove from save list</button>
+                            <button class="btn btn-primary shop-item-button" type="button"><i class="material-icons" style="font-size:24px;color:red">favorite</i></button>
                             </a>
                         </div>
                     </div>

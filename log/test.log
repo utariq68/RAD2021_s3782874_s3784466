@@ -1,0 +1,442 @@
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (10.7ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE  INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs"[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "byte_size" bigint NOT NULL, "checksum" varchar NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "bags"[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "bags" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "category" varchar, "price" integer, "image" varchar, "size" varchar, "color" varchar, "quantity" integer, "user" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "forgots"[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "forgots" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "items"[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "category" varchar, "price" integer, "image" varchar, "list" varchar, "popularity" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "tags" varchar)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "pins"[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "pins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "caption" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "products"[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" varchar, "category" varchar, "price" integer, "image" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "email" varchar)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "ratings"[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "ratings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "score" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "email" varchar)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "subscribers"[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "subscribers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "twitter_users"[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "twitter_users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "provider" varchar, "uid" varchar, "name" varchar, "token" varchar, "secret" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "name" varchar)[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "wishlists"[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "wishlists" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" varchar, "category" varchar, "price" integer, "image" varchar, "list" varchar, "popularity" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "email" varchar)[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (5.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210523150902)[0m
+  [1m[35m (5.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210508083649),
+(20210509162809),
+(20210510214619),
+(20210517151849),
+(20210517152059),
+(20210518070937),
+(20210518101052),
+(20210520133049),
+(20210521035628),
+(20210522055650),
+(20210522093731),
+(20210522173910),
+(20210523090632),
+(20210523102703),
+(20210523103146),
+(20210523112425),
+(20210523131925),
+(20210523132051),
+(20210523132238),
+(20210523132407);
+
+[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2021-05-23 17:39:37.326052"], ["updated_at", "2021-05-23 17:39:37.326052"]]
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.2ms)[0m  [1m[31mDELETE FROM "bags"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "items"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "pins"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "products"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "ratings"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "subscribers"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "twitter_users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "wishlists"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "forgots"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:37.993212', '2021-05-23 17:39:37.993212', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:37.993212', '2021-05-23 17:39:37.993212', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:37.995259', '2021-05-23 17:39:37.995259', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:37.995259', '2021-05-23 17:39:37.995259', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:37.996661', '2021-05-23 17:39:37.996661', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:37.996661', '2021-05-23 17:39:37.996661', 298486374)[0m
+  [1m[35m (1.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.1ms)[0m  [1m[31mDELETE FROM "bags"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "items"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "pins"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "products"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "ratings"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "subscribers"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "twitter_users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "wishlists"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "forgots"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:38.576578', '2021-05-23 17:39:38.576578', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:38.576578', '2021-05-23 17:39:38.576578', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:38.577194', '2021-05-23 17:39:38.577194', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:38.577194', '2021-05-23 17:39:38.577194', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:38.577616', '2021-05-23 17:39:38.577616', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:38.577616', '2021-05-23 17:39:38.577616', 298486374)[0m
+  [1m[35m (1.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.1ms)[0m  [1m[31mDELETE FROM "bags"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "items"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "pins"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "products"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "ratings"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "subscribers"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "twitter_users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "wishlists"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "forgots"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:39.150200', '2021-05-23 17:39:39.150200', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:39.150200', '2021-05-23 17:39:39.150200', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:39.150803', '2021-05-23 17:39:39.150803', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:39.150803', '2021-05-23 17:39:39.150803', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:39.151242', '2021-05-23 17:39:39.151242', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:39.151242', '2021-05-23 17:39:39.151242', 298486374)[0m
+  [1m[35m (1.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.1ms)[0m  [1m[31mDELETE FROM "bags"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "items"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "pins"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "products"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "ratings"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "subscribers"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "twitter_users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "wishlists"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "forgots"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:39.725033', '2021-05-23 17:39:39.725033', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:39.725033', '2021-05-23 17:39:39.725033', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:39.725630', '2021-05-23 17:39:39.725630', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:39.725630', '2021-05-23 17:39:39.725630', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:39.726044', '2021-05-23 17:39:39.726044', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:39.726044', '2021-05-23 17:39:39.726044', 298486374)[0m
+  [1m[35m (1.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.1ms)[0m  [1m[31mDELETE FROM "bags"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "items"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "pins"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "products"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "ratings"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "subscribers"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "twitter_users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "wishlists"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "forgots"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:40.298174', '2021-05-23 17:39:40.298174', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:40.298174', '2021-05-23 17:39:40.298174', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:40.298786', '2021-05-23 17:39:40.298786', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:40.298786', '2021-05-23 17:39:40.298786', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:40.299239', '2021-05-23 17:39:40.299239', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:40.299239', '2021-05-23 17:39:40.299239', 298486374)[0m
+  [1m[35m (1.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.1ms)[0m  [1m[31mDELETE FROM "bags"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "items"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "pins"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "products"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "ratings"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "subscribers"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "twitter_users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "wishlists"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "forgots"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:40.872257', '2021-05-23 17:39:40.872257', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:40.872257', '2021-05-23 17:39:40.872257', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:40.872864', '2021-05-23 17:39:40.872864', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:40.872864', '2021-05-23 17:39:40.872864', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:40.873291', '2021-05-23 17:39:40.873291', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:40.873291', '2021-05-23 17:39:40.873291', 298486374)[0m
+  [1m[35m (1.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.1ms)[0m  [1m[31mDELETE FROM "bags"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "items"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "pins"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "products"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "ratings"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "subscribers"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "twitter_users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "wishlists"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "forgots"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:41.447041', '2021-05-23 17:39:41.447041', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:41.447041', '2021-05-23 17:39:41.447041', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:41.447702', '2021-05-23 17:39:41.447702', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:41.447702', '2021-05-23 17:39:41.447702', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:41.448118', '2021-05-23 17:39:41.448118', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:41.448118', '2021-05-23 17:39:41.448118', 298486374)[0m
+  [1m[35m (1.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.1ms)[0m  [1m[31mDELETE FROM "bags"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "items"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "pins"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "products"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "ratings"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "subscribers"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "twitter_users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "wishlists"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "forgots"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:42.024884', '2021-05-23 17:39:42.024884', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:42.024884', '2021-05-23 17:39:42.024884', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:42.025542', '2021-05-23 17:39:42.025542', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:42.025542', '2021-05-23 17:39:42.025542', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:42.025957', '2021-05-23 17:39:42.025957', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:42.025957', '2021-05-23 17:39:42.025957', 298486374)[0m
+  [1m[35m (1.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.1ms)[0m  [1m[31mDELETE FROM "bags"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "items"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "pins"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "products"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "ratings"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "subscribers"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "twitter_users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "wishlists"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "forgots"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:42.600355', '2021-05-23 17:39:42.600355', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:42.600355', '2021-05-23 17:39:42.600355', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:42.600965', '2021-05-23 17:39:42.600965', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:42.600965', '2021-05-23 17:39:42.600965', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:42.601386', '2021-05-23 17:39:42.601386', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:42.601386', '2021-05-23 17:39:42.601386', 298486374)[0m
+  [1m[35m (1.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.1ms)[0m  [1m[31mDELETE FROM "bags"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "items"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "pins"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "products"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "ratings"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "subscribers"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "twitter_users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "wishlists"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "forgots"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:43.173925', '2021-05-23 17:39:43.173925', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:43.173925', '2021-05-23 17:39:43.173925', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:43.174545', '2021-05-23 17:39:43.174545', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:43.174545', '2021-05-23 17:39:43.174545', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:43.174961', '2021-05-23 17:39:43.174961', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:43.174961', '2021-05-23 17:39:43.174961', 298486374)[0m
+  [1m[35m (1.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.1ms)[0m  [1m[31mDELETE FROM "bags"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "items"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "pins"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "products"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "ratings"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "subscribers"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "twitter_users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "wishlists"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "forgots"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:43.769188', '2021-05-23 17:39:43.769188', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:43.769188', '2021-05-23 17:39:43.769188', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:43.769801', '2021-05-23 17:39:43.769801', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:43.769801', '2021-05-23 17:39:43.769801', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:43.770217', '2021-05-23 17:39:43.770217', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:43.770217', '2021-05-23 17:39:43.770217', 298486374)[0m
+  [1m[35m (1.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.2ms)[0m  [1m[31mDELETE FROM "bags"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "items"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "pins"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "products"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "ratings"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "subscribers"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "twitter_users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "wishlists"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "forgots"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:44.342486', '2021-05-23 17:39:44.342486', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:44.342486', '2021-05-23 17:39:44.342486', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:44.343109', '2021-05-23 17:39:44.343109', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:44.343109', '2021-05-23 17:39:44.343109', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:44.343579', '2021-05-23 17:39:44.343579', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:44.343579', '2021-05-23 17:39:44.343579', 298486374)[0m
+  [1m[35m (1.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.1ms)[0m  [1m[31mDELETE FROM "bags"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "items"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "pins"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "products"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "ratings"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "subscribers"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "twitter_users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "wishlists"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "forgots"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:44.917038', '2021-05-23 17:39:44.917038', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:44.917038', '2021-05-23 17:39:44.917038', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:44.917655', '2021-05-23 17:39:44.917655', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:44.917655', '2021-05-23 17:39:44.917655', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:44.918082', '2021-05-23 17:39:44.918082', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:44.918082', '2021-05-23 17:39:44.918082', 298486374)[0m
+  [1m[35m (1.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.1ms)[0m  [1m[31mDELETE FROM "bags"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "items"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "pins"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "products"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "ratings"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "subscribers"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "twitter_users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "wishlists"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "forgots"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:45.490178', '2021-05-23 17:39:45.490178', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:45.490178', '2021-05-23 17:39:45.490178', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:45.490790', '2021-05-23 17:39:45.490790', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:45.490790', '2021-05-23 17:39:45.490790', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:45.491264', '2021-05-23 17:39:45.491264', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:45.491264', '2021-05-23 17:39:45.491264', 298486374)[0m
+  [1m[35m (1.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.1ms)[0m  [1m[31mDELETE FROM "bags"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "items"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "pins"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "products"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "ratings"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "subscribers"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "twitter_users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "wishlists"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "forgots"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:46.064530', '2021-05-23 17:39:46.064530', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:46.064530', '2021-05-23 17:39:46.064530', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:46.065136', '2021-05-23 17:39:46.065136', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:46.065136', '2021-05-23 17:39:46.065136', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:46.065566', '2021-05-23 17:39:46.065566', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:46.065566', '2021-05-23 17:39:46.065566', 298486374)[0m
+  [1m[35m (1.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.1ms)[0m  [1m[31mDELETE FROM "bags"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "items"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "pins"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "products"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "ratings"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "subscribers"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "twitter_users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "wishlists"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "forgots"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:46.638980', '2021-05-23 17:39:46.638980', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:46.638980', '2021-05-23 17:39:46.638980', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:46.639636', '2021-05-23 17:39:46.639636', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:46.639636', '2021-05-23 17:39:46.639636', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:46.640069', '2021-05-23 17:39:46.640069', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:46.640069', '2021-05-23 17:39:46.640069', 298486374)[0m
+  [1m[35m (1.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.1ms)[0m  [1m[31mDELETE FROM "bags"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "items"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "pins"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "products"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "ratings"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "subscribers"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "twitter_users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "wishlists"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "forgots"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:47.229884', '2021-05-23 17:39:47.229884', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:47.229884', '2021-05-23 17:39:47.229884', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:47.230508', '2021-05-23 17:39:47.230508', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:47.230508', '2021-05-23 17:39:47.230508', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:47.230918', '2021-05-23 17:39:47.230918', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:47.230918', '2021-05-23 17:39:47.230918', 298486374)[0m
+  [1m[35m (1.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.1ms)[0m  [1m[31mDELETE FROM "bags"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "items"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "pins"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "products"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "ratings"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "subscribers"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "twitter_users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.0ms)[0m  [1m[31mDELETE FROM "wishlists"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "forgots"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:47.803663', '2021-05-23 17:39:47.803663', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bags" ("title", "body", "category", "price", "image", "size", "color", "quantity", "user", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 'MyString', 1, 'MyString', '2021-05-23 17:39:47.803663', '2021-05-23 17:39:47.803663', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:47.804298', '2021-05-23 17:39:47.804298', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "items" ("title", "body", "category", "price", "image", "list", "popularity", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, 'MyString', 'MyString', 1, '2021-05-23 17:39:47.804298', '2021-05-23 17:39:47.804298', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:47.804730', '2021-05-23 17:39:47.804730', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "pins" ("title", "caption", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', '2021-05-23 17:39:47.804730', '2021-05-23 17:39:47.804730', 298486374)[0m
+  [1m[35m (1.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m

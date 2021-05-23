@@ -1,0 +1,14 @@
+<center>
+  <ul>
+    <% if @rate.exists? %>
+      <% @rate.each do |rating| %>
+
+        <li><%= rating.email %> - <%= rating.score %></li>
+
+      <% end %>
+    <% else %>
+
+    <p>NO RATINGS YET</p>
+    <% end %>
+  </ul>
+</center>
