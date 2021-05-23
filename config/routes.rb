@@ -54,15 +54,15 @@ Rails.application.routes.draw do
   # get '/remove/:id', to: 'items#remove', as: 'itemRemove'
 
   post "/newsletter", to: "news_letter#newsletter"
-  
+
   get '/newsletter', to: 'news_letter#newsletter'
 
   post '/search', to: 'items#search'
-  
+
   get '/search', to: 'items#search'
 
   post '/rating', to: 'items#rating'
-  
+
   get '/rating', to: 'items#rating'
 
   get '/item/:id', to: 'items#item_details', as:'itemDetails'

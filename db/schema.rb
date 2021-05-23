@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_23_112425) do
+ActiveRecord::Schema.define(version: 2021_05_23_132407) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -72,22 +72,17 @@ ActiveRecord::Schema.define(version: 2021_05_23_112425) do
     t.string "body"
     t.string "category"
     t.integer "price"
-    t.string "list"
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
   end
 
   create_table "ratings", force: :cascade do |t|
     t.string "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "rattings", force: :cascade do |t|
-    t.integer "score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "email"
   end
 
   create_table "subscribers", force: :cascade do |t|
@@ -112,7 +107,6 @@ ActiveRecord::Schema.define(version: 2021_05_23_112425) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.integer "times"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

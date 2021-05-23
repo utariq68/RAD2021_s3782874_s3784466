@@ -53,8 +53,14 @@ class ItemsController < ApplicationController
 
   def wishAdd
     @item = Item.find(params[:id])
+    @curr_pop = @item.popularity
+    @curr_pop += 1
+    @item.update(popularity: @curr_pop)
+    @item.save
+
     newItem = Wishlist.new(title: @item.title, body: @item.body, price: @item.price, image:@item.image, list:@item.list, popularity:@item.popularity)
     newItem.save
+
     if current_user
       user = User.find(session[:user_id])
       newItem.update(email: user.email)
@@ -70,7 +76,7 @@ class ItemsController < ApplicationController
 
   def removeWish
     @item = Item.find(params[:id])
-    Wishlist.all.each do |wish| 
+    Wishlist.all.each do |wish|
       if @item.title == wish.title
         wish.destroy
       end
@@ -102,6 +108,12 @@ class ItemsController < ApplicationController
       quantity = params[:quantity].to_i
       email = current_user.email
 
+      @item = Item.all.where(title: title)
+      @curr_pop = @item[0].popularity
+      @curr_pop += 1
+      @item[0].update(popularity: @curr_pop)
+      @item[0].save
+
       new_bag = Bag.new(title: title, body: body, category: category, price: price, image: image, size: size, color: color, quantity: quantity, user: email)
       new_bag.save
       redirect_to bag_path
@@ -114,6 +126,12 @@ class ItemsController < ApplicationController
       size = params[:size]
       color = params[:color]
       quantity = params[:quantity].to_i
+
+      @item = Item.all.where(title: title)
+      @curr_pop = @item[0].popularity
+      @curr_pop += 1
+      @item[0].update(popularity: @curr_pop)
+      @item[0].save
 
 
       new_bag = Bag.new(title: title, body: body, category: category, price: price, image: image, size: size, color: color, quantity: quantity)
@@ -159,42 +177,41 @@ class ItemsController < ApplicationController
   end
 
   def checkout
+    email = current_user.email
+    @bag_items = Bag.all.where(user: email)
 
-    if current_user.times == nil
+    @bag_items.each do |item|
+      title = item.title
+      body = item.body
+      category = item.category
+      price = item.price
+      image = item.image
+      user_email = email
 
-      current_user_email = current_user.email
-      @bag_items = Bag.all.where(user: current_user_email)
-      # @item = Bag.where(user: current_user_email)
-      # @saveProducts = Product.new(title: @item.title, body: @item.body, category: @item.category, price: @item.price, image: @item.image, list: @item.size)
-      # @saveProducts.save
+      new_purchase = Product.new(title: title, body: body, category: category, price: price, image: image, email: user_email)
+      new_purchase.save
 
-      @bag_items.each do |item|
-        item.destroy
-      
-      
+      item.destroy
+    end
+
+    has_rated = Rating.all.where(email: email)
+
+    if has_rated.exists?
+      redirect_to bag_path
+    else
       redirect_to rating_path
     end
-    else
 
-      current_user_email = current_user.email
-      @bag_items = Bag.all.where(user: current_user_email)
-
-      @bag_items.each do |item|
-      item.destroy
-
-      redirect_to root_path
-    end
-  end
   end
 
   def rating
     rating = params[:quantity]
+    email = current_user.email
 
-    rate = Rating.new(score: rating)
-    rate.save
-
-    if current_user.times == nil
-      current_user.update(times: 2)
+    if rating != nil
+      new_rating = Rating.new(score: rating, email: email)
+      new_rating.save
+      redirect_to root_path
     end
 
   end
@@ -224,12 +241,9 @@ class ItemsController < ApplicationController
 
   def search
     @searchItem = params[:search]
-    @shopping =  Item.all.where(
-        "title like ?", 
-        "%#{@searchItem}%"
-    )
+    puts @searchItem
+    @shopping =  Item.all.where("title like ?", "%#{@searchItem}%")
   end
-
 
   def filteredItems
 
