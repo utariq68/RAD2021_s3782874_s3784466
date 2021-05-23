@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :pins
   root "items#index"
 
   get 'authentication/index'
@@ -35,6 +36,8 @@ Rails.application.routes.draw do
   get 'wishlist', to: 'items#wishlist'
 
   get 'summary', to: 'items#summary'
+
+  get 'allProducts', to: 'items#allProducts'
 
   get '/wishAdd/:id', to: 'items#wishAdd', as: 'addWish'
 

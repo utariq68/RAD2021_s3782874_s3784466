@@ -1,0 +1,17 @@
+<center><p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @pin.title %>
+</p>
+
+ <%= link_to image_tag(@pin.image, :size => "300x300"), pins_path %> 
+
+<p>
+  <strong>Caption:</strong>
+  <%= @pin.caption %>
+</p>
+
+<%= link_to 'Edit', edit_pin_path(@pin) %> |
+<%= link_to 'Back', pins_path %>
+</center>

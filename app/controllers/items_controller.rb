@@ -164,13 +164,16 @@ class ItemsController < ApplicationController
 
       current_user_email = current_user.email
       @bag_items = Bag.all.where(user: current_user_email)
+      # @item = Bag.where(user: current_user_email)
+      # @saveProducts = Product.new(title: @item.title, body: @item.body, category: @item.category, price: @item.price, image: @item.image, list: @item.size)
+      # @saveProducts.save
 
       @bag_items.each do |item|
         item.destroy
-      end
+      
       
       redirect_to rating_path
-
+    end
     else
 
       current_user_email = current_user.email
@@ -226,4 +229,9 @@ class ItemsController < ApplicationController
     @test = params[:test]
     puts "ADJSNAJSNDASJNDADNKJANDJKASNDJKANDJKANSDJKNADJKANKJSD" + @test.to_s
   end
+
+  def allProducts
+    @savelist = Bag.all
+  end
+
 end
