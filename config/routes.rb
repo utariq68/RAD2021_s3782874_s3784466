@@ -25,6 +25,10 @@ Rails.application.routes.draw do
 
   get 'items/set'
 
+  get 'adminrate', to: 'items#adminRate'
+
+  get 'subs', to: 'items#subs'
+
   get '/men', to: 'items#men'
 
   get '/women', to: 'items#female'

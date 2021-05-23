@@ -189,11 +189,18 @@ class ItemsController < ApplicationController
 
   def rating
     rating = params[:quantity]
-    
+
+    rate = Rating.new(score: rating)
+    rate.save
+
     if current_user.times == nil
       current_user.update(times: 2)
     end
 
+  end
+
+  def adminRate
+    @rate = Rating.all
   end
 
   def edit_subscription
@@ -234,4 +241,7 @@ class ItemsController < ApplicationController
     @savelist = Bag.all
   end
 
+  def subs
+    @show = Subscriber.all
+  end
 end
