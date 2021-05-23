@@ -4,6 +4,8 @@
 
 <% if current_user %>
 
+<center><%= gravatar_for current_user %></center>
+
 <center><h1><%= current_user.name %><h1></center>
 
 <center><h1>Pending orders <%= link_to 'Show bag', bag_path, class: "btn btn-primary" %> </h1> </center>
