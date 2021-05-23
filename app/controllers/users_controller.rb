@@ -56,6 +56,35 @@ class UsersController < ApplicationController
     end
   end
 
+  def forgot
+    forgotten = params[:email]
+    verified_email = params[:linked]
+
+    if forgotten != nil
+      new_forgotten = Forgot.new(email: forgotten)
+      new_forgotten.save
+      NewLetterMailer.forgot_password(forgotten).deliver_now
+    end
+
+    if verified_email != nil
+      check = Forgot.all.where("email like ?", "%#{verified_email}%")
+
+      if check.exists?
+        login_email = check[0].email
+        check[0].destroy
+        user = User.find_by_email(login_email)
+        session[:user_id] = user.id
+
+        persistance = Bag.all.where(user: nil).update(user: params[:email])
+        persistance = Wishlist.all.where(email: nil)
+        persistance.update(email: params[:email])
+        redirect_to root_path, notice: "Logged in!"
+      else
+        redirect_to forgot_path
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

@@ -1,8 +1,5 @@
 class NewsLetterController < ApplicationController
 
-  def newsl
-  end
-
   def newsletter
     @email = params[:email]
 

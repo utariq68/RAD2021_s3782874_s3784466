@@ -1,13 +1,13 @@
 class SessionsController < ApplicationController
   def new
   end
-  
+
   def create
     user = User.find_by_email(params[:email])
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      
+
       persistance = Bag.all.where(user: nil).update(user: params[:email])
       persistance = Wishlist.all.where(email: nil)
       persistance.update(email: params[:email])

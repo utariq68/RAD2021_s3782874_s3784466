@@ -87,5 +87,11 @@ Rails.application.routes.draw do
 
   post '/filteredItems', to: 'items#filteredItems'
 
+  get '/forgot', to: 'users#forgot'
+
+  post '/forgot', to: 'users#forgot'
+
+  get '/forgot/:linked', to: 'users#forgot'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

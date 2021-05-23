@@ -1,0 +1,11 @@
+<center><h3>Forgot password</h3></center>
+<center>
+  <%= form_tag(forgot_path, method: "post") do %>
+
+        <%= label_tag(:email, "Email: ") %>
+        <%= text_field_tag(:email) %>
+        <%= submit_tag("Forgot") %>
+
+  <% end %>
+</center>
+<center><p><%= @message %></p></center>
