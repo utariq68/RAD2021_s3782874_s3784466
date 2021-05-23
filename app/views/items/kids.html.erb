@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <head>
         <title>The Generics Store | Mens</title>
         <meta name="description" content="Mens page">
@@ -21,12 +22,31 @@
                             <span class="shop-item-price">$<%= item.price %></span>
                             <span class="shop-item-price"><%= item.category %></span>
 
-                             <% if item.list == "f" %>
-                            <a href="<%=addWish_path(item) %>">
-                            <button class="btn btn-primary shop-item-button" type="button">Add to save list</button>
-                            </a>
+                            <% addedToSavelist = false %>
+                            <% Wishlist.all.each do |wish| %>
+                                <% if wish.title == item.title %>
+                                    <% if current_user%>
+                                        <% user = User.find(session[:user_id])%>
+                                        <% if user.email == wish.email %>
+                                            <% addedToSavelist = true %>
+                                        <% end%>
+                                    <%else %>
+                                        <% if wish.email == nil%>
+                                            <% addedToSavelist = true %>
+                                        <% end %>
+                                    <% end%>
+                                    
+                                <% end%>
+                            <% end %>
+                            <% if addedToSavelist == false %>
+                                <a href="<%=addWish_path(item) %>">
+                                <button class="btn btn-primary shop-item-button" type="button"><i class="material-icons">&#xe87d;</i></button>
+                                </a>
                             <% else %>
-                            <button class="btn btn-primary shop-item-button" type="button">Saved</button>
+                                <a href="<%=removeItem_path(item) %>">
+                                
+                                <button class="btn btn-primary shop-item-button" type="button"><i class="material-icons" style="font-size:24px;color:red">favorite</i></button>
+                                </a>
                             <% end %>
                         </div>
                     </div>
@@ -37,3 +57,4 @@
         </section>
     </body>
 </html>
+<br><br><br><br><br><br>

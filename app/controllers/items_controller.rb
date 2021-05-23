@@ -64,11 +64,6 @@ class ItemsController < ApplicationController
 
   def wishRemove
     @item = Wishlist.find(params[:id])
-    # Wishlist.all.each do |wish| 
-    #   if @item.title == wish.title
-    #     wish.destroy
-    #   end
-    # end
     @item.destroy
     redirect_to wishlist_path
   end

@@ -55,6 +55,7 @@ Rails.application.routes.draw do
   get '/search', to: 'items#search'
 
   post '/rating', to: 'items#rating'
+  
   get '/rating', to: 'items#rating'
 
   get '/item/:id', to: 'items#item_details', as:'itemDetails'
