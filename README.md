@@ -1,8 +1,8 @@
 # README submission file for RAD Assignment 1
 
 ## Contributors
-* Muhammad Umer Tariq (s3782874)
-* Rodrigo Miguel Rojas (s3784466)
+* Muhammad Umer Tariq (s3782874) 50
+* Rodrigo Miguel Rojas (s3784466) 50
 
 ## Highest Level Attempted
 * 90+
